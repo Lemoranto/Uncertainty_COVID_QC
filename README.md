@@ -36,7 +36,7 @@ Ce dossier contient trois types de codes Python :
 
 ### 📁 Dossier `Code`
 
-- **Traitement complet** :
+- **Traitement complet de la base de données textuelle** :
    - 📄 `Full_code.R`
    
    Ce script R assure le traitement complet des conférences, incluant la création de la base de données, tokénisation, annotation, analyses par dictionnaire, analyses de sentiments, création des variables, nettoyage et compilation de la base de données finale.
@@ -103,7 +103,7 @@ This directory contains three types of Python codes:
 
 ### 📁 Directory `Code`
 
-- **Complete Processing**:
+- **Complete Processing of Textual Database**:
    - 📄 `Full_code.R`
    
    This R script handles the complete processing of the conferences, including database creation, tokenization, annotation, dictionary-based analysis, sentiment analysis, variable creation, cleaning, and final database compilation.
