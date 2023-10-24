@@ -10,39 +10,57 @@ Les analyses englobent :
 - Une analyse de sentiments basée sur Duval et Pétry (2016).
 - Une analyse par dictionnaire permettant d'identifier les phrases relatives à divers sujets tels que la pandémie, la vaccination, les preuves scientifiques, ou encore les groupes cibles des mesures sanitaires.
 
-## Codes
+## Brève description des codes
 
-### Dossier `AutoTranscribeAndScrape`
+### 📁 Dossier `AutoTranscribeAndScrape`
 
-Ce dossier regroupe trois types de codes Python :
+Ce dossier contient trois types de codes Python :
 
-1. **Récupération des transcriptions** : Les scripts situés dans `recup_transcriptions` (`Extract_conf_covid.py`, `Extract_conf_not_covid.py`, `Extract_pp_covid.py`, `Extract_pp_covid.py`) permettent d'extraire les conférences de presse et les points de presse depuis le 01 janvier 2020 depuis le site de l'Assemblée nationale du Québec.
+1. **Récupération des transcriptions** :
+   - 📄 `Extract_conf_covid.py`
+   - 📄 `Extract_conf_not_covid.py`
+   - 📄 `Extract_pp_covid.py`
+   - 📄 `Extract_pp_covid.py`
+   
+   Ces scripts, situés dans le sous-dossier `recup_transcriptions`, permettent d'extraire les conférences de presse et les points de presse depuis le 01 janvier 2020 sur la pandémie de COVID-19 depuis le site de l'Assemblée nationale du Québec.
 
-2. **Récupération audio** : `recuperation_audio_conference.py` dans `AutoTranscribe` sert à récupérer l'audio des conférences non transmises ou retranscrites par le gouvernement depuis des vidéos YouTube. L'extraction se base sur le fichier `hyperliens_conferences.csv`.
+2. **Récupération audio** :
+   - 📄 `recuperation_audio_conference.py`
+   
+   Ce script, situé dans le sous-dossier `AutoTranscribe`, permet de récupérer l'audio des conférences de presse non retranscrites à partir de vidéos YouTube en utilisant le fichier 📄 `hyperliens_conferences.csv`.
 
-3. **Transcription automatique** : `transcription.py` exploite Whisper d'OpenAI pour transcrire l'audio des conférences précédemment extraites, tout en distinguant les différents locuteurs. Un fichier `annotations_langues.csv` aide à segmenter manuellement les portions audio en anglais pour éviter leur transcription.
+3. **Transcription automatique** :
+   - 📄 `transcription.py`
+   
+   Ce script utilise Whisper d'OpenAI pour transcrire automatiquement l'audio des conférences de presse manquantes. Un fichier 📄 `annotations_langues.csv` est utilisé pour exclure les portions audio en anglais.
 
-### Dossier `Code`
+### 📁 Dossier `Code`
 
-- **Traitement intégral** : `Full_code` en R assure le traitement complet des conférences, incluant la création de la base de données, tokénisation, annotation, analyses diverses, nettoyage et compilation.
+- **Traitement complet** :
+   - 📄 `Full_code.R`
+   
+   Ce script R permet le traitement complet des conférences de presse.
 
-- **Scripts détaillés** : `Scripts` décompose le code complet en étapes distinctes.
+- **Scripts décomposés** : Le sous-dossier 📁 `Scripts` contient le code complet décomposé en différentes étapes.
 
-## Données
+## Description des données
 
-### Bases de données textuelles
+### Base de données textuelles
 
-- **Conferences de presse** : `Press_conferences` archive toutes les conférences du gouvernement du Québec durant la pandémie. Elles sont aussi regroupées dans `QC.conf_texts.csv`.
+- 📁 Dossier `Press_conferences` archive toutes les conférences du gouvernement du Québec durant la pandémie. Elles sont aussi regroupées dans 📄 `QC.conf_texts.csv`.
 
-- **Transcriptions extraites** : Les conférences extraites du site de l'Assemblée nationale sont accessibles dans les sous-dossiers de `recup_transcriptions`.
+- 📁 Les différents dossiers d'extractions contenus dans `recup_transcriptions` contiennent les conférences de presse extraites du site de l'Assemblée nationale.
 
-- **Transcriptions automatiques** : Les conférences transmises automatiquement sont dans `Texts_youtube` de `Press_conferences`. Après relecture et validation manuelle, les versions originales sont conservées dans `Original_autotranscribed` du dossier `Texts_validation`.
+- 📁 Dossier `Texts_youtube` (situé dans `Press_conferences`) : Contient les conférences de presse qui ont été automatiquement transcrites puis validées manuellement.
+   - 📁 Sous-dossier `Original_autotranscribed` : Contient les transcriptions avant relecture.
 
-### Bases de données numériques
+### Base de données numériques
 
-- **Données épidémiologiques** : `QC.COVID_data` rassemble les données épidémiologiques du Québec durant la pandémie, issues de l'Institut national de santé publique du Québec (INSPQ).
+- 📄 `QC.COVID_data` : rassemble les données épidémiologiques du Québec durant la pandémie, issues de l'Institut national de santé publique du Québec (INSPQ).
 
-- **Mesures sanitaires** : `QC.IRPPstringency_data.csv` détaille la sévérité des mesures sanitaires, provenant de l'Institut de recherche en politiques publiques (IRPP).
+- 📄 `QC.IRPPstringency_data.csv` : détaille la sévérité des mesures sanitaires, provenant de l'Institut de recherche en politiques publiques (IRPP).
 
-- **Données de vaccination** : `QC.vax_data` contient les données de vaccination, fournies par l'Institut national de santé publique du Québec (INSPQ)..
+- 📄 `QC.vax_data` : contient les données de vaccination, fournies par l'Institut national de santé publique du Québec (INSPQ).
+
+
 
