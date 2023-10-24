@@ -54,15 +54,18 @@ for (i in 1:(nrow(sample_QC.conf) - 8)) {
 # Creating Conf_pers_clean by deleting duplicates and filtering the database
 exact_expressions_to_remove <- c(
   "M.", "le", "Mme", "I'm", "la", "It's", "So", "hein", "I", 
-  "Is", "Mrs.", "Mr", "Di", "(", "OK", "That's", "Vien", "Ms.", "Mr.", "D'", "Des", "So...", ",", ".", "demande"
+  "Is", "Mrs.", "Mr", "Di", "(", "OK", "That's", "Vien", "Ms.", "Mr.", "D'", "Des", 
+  "So...", ",", ".", "demande", "...", "Trump", ":", "j'"
 )
+
 
 Conf_pers_clean <- Conf_pers_full %>%
   distinct(Name, .keep_all = TRUE) %>%
   filter(
-    !(Name %in% exact_expressions_to_remove | grepl(pattern, Name)),
-    is.na(First_name) | !(First_name %in% exact_expressions_to_remove | grepl(pattern, First_name))
+    !(Name %in% exact_expressions_to_remove),
+    is.na(First_name) | !(First_name %in% exact_expressions_to_remove)
   )
+
 
 
 # Creation of a dataframe to store policymakers and officials names
