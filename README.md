@@ -6,8 +6,8 @@ Cette plateforme propose des codes et des bases de données dédiés à la colle
 
 Les analyses englobent :
 - L'identification des différents locuteurs (décideurs politiques, représentants de la santé publique, journalistes, genre).
-- Une analyse des marqueurs d'incertitude basée sur Claveau et al. (2020).
-- Une analyse de sentiments basée sur Duval et Pétry (2016).
+- Une analyse des marqueurs d'incertitude basée sur [Claveau et al. (2020)](https://papers.ssrn.com/abstract=3747158).
+- Une analyse de sentiments basée sur [Duval et Pétry (2016)](https://www.cambridge.org/core/journals/canadian-journal-of-political-science-revue-canadienne-de-science-politique/article/lanalyse-automatisee-du-ton-mediatique-construction-et-utilisation-de-la-version-francaise-du-lexicoder-sentiment-dictionary/7D61B73C4BA44EC0ECB654461F2D4B3C). 
 - Une analyse par dictionnaire permettant d'identifier les phrases relatives à divers sujets tels que la pandémie, la vaccination, les preuves scientifiques, ou encore les groupes cibles des mesures sanitaires.
 
 ## Brève description des codes
