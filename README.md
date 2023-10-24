@@ -57,11 +57,11 @@ Ce dossier contient trois types de codes Python :
 
 ### Base de données numériques
 
-- 📄 `QC.COVID_data` : rassemble les données épidémiologiques du Québec durant la pandémie, issues de l'Institut national de santé publique du Québec (INSPQ).
+- 📄 `QC.COVID_data` : rassemble les données épidémiologiques du Québec durant la pandémie, [issues de l'Institut national de santé publique du Québec (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
 
-- 📄 `QC.IRPPstringency_data.csv` : détaille la sévérité des mesures sanitaires, provenant de l'Institut de recherche en politiques publiques (IRPP).
+- 📄 `QC.IRPPstringency_data.csv` : détaille la sévérité des mesures sanitaires, [provenant de l'Institut de recherche en politiques publiques (IRPP)](https://centre.irpp.org/fr/data/politiques-provinciales-sur-la-pandemie-de-covid-19/).
 
-- 📄 `QC.vax_data` : contient les données de vaccination, fournies par l'Institut national de santé publique du Québec (INSPQ).
+- 📄 `QC.vax_data` : contient les données de vaccination, [fournies par l'Institut national de santé publique du Québec (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
 
 
 
@@ -123,10 +123,10 @@ This directory contains three types of Python codes:
 
 ### Numerical Database
 
-- 📄 `QC.COVID_data`: Compiles epidemiological data from Quebec during the pandemic, sourced from the Quebec National Institute of Public Health (INSPQ).
+- 📄 `QC.COVID_data`: Compiles epidemiological data [from Quebec during the pandemic, sourced from the Quebec National Institute of Public Health (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
 
-- 📄 `QC.IRPPstringency_data.csv`: Details the severity of health measures, sourced from the Public Policy Research Institute (IRPP).
+- 📄 `QC.IRPPstringency_data.csv`: Details the severity of health measures, [sourced from the Public Policy Research Institute (IRPP)](https://centre.irpp.org/fr/data/politiques-provinciales-sur-la-pandemie-de-covid-19/).
 
-- 📄 `QC.vax_data`: Contains vaccination data, provided by the Quebec National Institute of Public Health (INSPQ).
+- 📄 `QC.vax_data`: Contains vaccination data, [provided by the Quebec National Institute of Public Health (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
 
 
