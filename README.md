@@ -57,10 +57,10 @@ Ce dossier contient trois types de codes Python :
    - UNC : Indice des sentiments d'incertitude des décideurs et des représentants de la Santé publique (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault, M. Arruda, M. Boileau)
    - EVD : Indice du niveau de preuve scientifique des décideurs (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
    - NEG : Indice des sentiments négatifs concerant la pandémie des décideurs (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
-   - CC100 : Indice mis sur 100 du nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
-   - CD100 : Indice mis sur 100 du nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
-   - TH100 : Indice mis sur 100 du nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
-   - VAX100 : Indice mis sur 100 du nombre de personnes vaccinées contre la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - CC100 : Indice sur 100 du nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - CD100 : Indice sur 100 du nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - TH100 : Indice sur 100 du nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - VAX100 : Indice sur 100 du nombre de personnes vaccinées contre la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
    - CC : Nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
    - CD : Nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
    - TH : Nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
@@ -88,6 +88,15 @@ Ce dossier contient trois types de codes Python :
 
 - 📁 Dossier `Texts_youtube` (situé dans `Press_conferences`) : Contient les conférences de presse qui ont été automatiquement transcrites puis validées manuellement.
    - 📁 Sous-dossier `Original_autotranscribed` : Contient les transcriptions avant relecture.
+   
+### Analyses
+
+- 📁 Dossier `Results` archive des résultats d'analyse produits dans le cadre d'une recherche portant sur l'interaction entre les sentiments d'incertitude, les sentiments négatifs, le niveau de preuve et la sévérité des mesures sanitaires durant la pandémie de COVID-19 au Québec.
+
+## Mise à jour à venir
+
+Indices différenciés des sentiments d'incertitude et des sentiments négatifs par catégorie (décideurs politiques, représentants de la santé publique, experts et journalistes).
+
 
 
 # Code and Database
@@ -180,5 +189,12 @@ This directory contains three types of Python codes:
 - 📁 Directory `Texts_youtube` (located in `Press_conferences`): Contains press conferences that were automatically transcribed and then manually validated.
    - 📁 Sub-directory `Original_autotranscribed`: Contains the transcriptions before review.
 
+### Analyses
+
+- 📁 The `Results` directory archives analysis results from research focusing on the interaction between feelings of uncertainty, negative sentiments, the level of evidence, and the stringency of health measures during the COVID-19 pandemic in Quebec.
+
+## Coming Soon
+
+A comprehensive database containing differentiated indices of feelings of uncertainty and negative sentiments by category (political decision-makers, public health representatives, experts, and journalists).
 
 
