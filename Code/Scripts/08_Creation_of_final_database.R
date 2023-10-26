@@ -55,7 +55,7 @@ hospi$ID <- as.numeric(hospi$ID)
 
 # Merge datasets and fill in dates with ID
 QC.unc.data_merge <- QC_data[,c("ID","date","stringencyPHM", "stringencyIndex")]
-QC.unc.data_merge <- merge(QC.unc.data_merge, Unc_persdict[, c("ID", "Evidence", "Negative_sentiments", "Uncertainty")], by = "ID", all = TRUE, na.rm = TRUE)
+QC.unc.data_merge <- merge(QC.unc.data_merge, Unc_persdict[, c("ID", "EVD", "NEG", "UNC")], by = "ID", all = TRUE, na.rm = TRUE)
 QC.unc.data_merge <- merge(QC.unc.data_merge, hospi[, c("ID", "hospi_total", "cases", "death")], by = "ID", all = TRUE, na.rm = TRUE)
 QC.unc.data_merge <- merge(QC.unc.data_merge, vacc[, c("ID", "VAX")], by = "ID", all = TRUE, na.rm = TRUE)
 QC.unc.data_merge$date <- as.Date("2020-02-27") + (QC.unc.data_merge$ID - 1)
@@ -95,6 +95,9 @@ QC.unc.data_daily$CD100 <- ifelse(is.na(QC.unc.data_daily$CD),NA,(QC.unc.data_da
 # Delete lines after the last value of SPHM
 QC.unc.data_daily <- QC.unc.data_daily %>% filter(ID <= 810)
 
+# Organize the database
+QC.unc.data_daily <- QC.unc.data_daily %>%
+  select(ID, date, wave, SPHM, SI, UNC, EVD, NEG, CC100, CD100, TH100, VAX100, CC, CD, TH, VAX)
 
 # Export database
 output_file <- file.path(export_path, "QC.unc.data_daily.csv")
