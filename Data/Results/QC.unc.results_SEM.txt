@@ -1,0 +1,47 @@
+lavaan 0.6.16 ended normally after 1 iteration
+
+  Estimator                                         ML
+  Optimization method                           NLMINB
+  Number of model parameters                        12
+
+                                                  Used       Total
+  Number of observations                           181         750
+
+Model Test User Model:
+                                                      
+  Test statistic                                18.617
+  Degrees of freedom                                 9
+  P-value (Chi-square)                           0.029
+
+Parameter Estimates:
+
+  Standard errors                             Standard
+  Information                                 Expected
+  Information saturated (h1) model          Structured
+
+Regressions:
+                   Estimate  Std.Err  z-value  P(>|z|)
+  EVD ~                                               
+    UNC       (c1)   -0.327    0.061   -5.341    0.000
+  NEG ~                                               
+    EVD       (c2)   -0.150    0.077   -1.933    0.053
+  lead_SPHM ~                                         
+    EVD       (c3)   -0.046    0.019   -2.423    0.015
+    UNC       (c4)    0.034    0.019    1.774    0.076
+    TH100     (c5)   -0.023    0.022   -1.029    0.303
+    CC100     (c6)    0.065    0.023    2.796    0.005
+    CD100     (c7)    0.016    0.021    0.778    0.437
+    lag_SPHM  (c8)    0.873    0.024   37.019    0.000
+    NEG       (c9)    0.028    0.017    1.651    0.099
+
+Variances:
+                   Estimate  Std.Err  z-value  P(>|z|)
+   .EVD             196.852   20.693    9.513    0.000
+   .NEG             247.694   26.037    9.513    0.000
+   .lead_SPHM        12.832    1.349    9.513    0.000
+
+Defined Parameters:
+                   Estimate  Std.Err  z-value  P(>|z|)
+    indirect_effct    0.015    0.007    2.207    0.027
+    indirect_ffct5    0.001    0.001    1.222    0.222
+
