@@ -9,7 +9,7 @@ import_data_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Data/D
 export_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Data/Database"
 
 # Load the datasets
-QC_data_file <- file.path(import_data_path, "QC.IRPPstringency_data")
+QC_data_file <- file.path(import_data_path, "QC.IRPPstringency_data.csv")
 QC_data <- read.csv(QC_data_file, stringsAsFactors = FALSE) 
 
 Unc_persdict_file <- file.path(import_data_path, "QC.unc_data_persanddict_daily.csv")
@@ -55,7 +55,7 @@ hospi$ID <- as.numeric(hospi$ID)
 
 # Merge datasets and fill in dates with ID
 QC.unc.data_merge <- QC_data[,c("ID","date","stringencyPHM", "stringencyIndex")]
-QC.unc.data_merge <- merge(QC.unc.data_merge, Unc_persdict[, c("ID", "EXP", "PolDicFullneg", "UDictFull")], by = "ID", all = TRUE, na.rm = TRUE)
+QC.unc.data_merge <- merge(QC.unc.data_merge, Unc_persdict[, c("ID", "Evidence", "Negative_sentiments", "Uncertainty")], by = "ID", all = TRUE, na.rm = TRUE)
 QC.unc.data_merge <- merge(QC.unc.data_merge, hospi[, c("ID", "hospi_total", "cases", "death")], by = "ID", all = TRUE, na.rm = TRUE)
 QC.unc.data_merge <- merge(QC.unc.data_merge, vacc[, c("ID", "VAX")], by = "ID", all = TRUE, na.rm = TRUE)
 QC.unc.data_merge$date <- as.Date("2020-02-27") + (QC.unc.data_merge$ID - 1)
@@ -97,5 +97,5 @@ QC.unc.data_daily <- QC.unc.data_daily %>% filter(ID <= 810)
 
 
 # Export database
-output_file <- file.path(export_path, "QC.unc.redux_daily.csv")
+output_file <- file.path(export_path, "QC.unc.data_daily.csv")
 write.csv(QC.unc.data_daily, file = output_file, row.names = FALSE)
