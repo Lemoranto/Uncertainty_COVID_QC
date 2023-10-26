@@ -153,7 +153,7 @@ This directory contains three types of Python codes:
    - date: Date
    - wave: Official contamination waves [defined by INSPQ](https://www.inspq.qc.ca/covid-19/donnees/ligne-du-temps)
    - SPHM: Policy stringency index for NPI excluding vaccination (data from IRPP, see below)
-   - SI: Stringency Index including health and vaccination measures (data from IRPP, see below)
+   - SI: Stringency Index including vaccination measures (data from IRPP, see below)
    - UNC: Uncertainty Sentiment Index of decision-makers and public health representatives (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault, M. Arruda, M. Boileau)
    - EVD: Evidence Level Index of decision-makers (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
    - NEG: Negative Sentiment Index concerning the pandemic from decision-makers (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
@@ -191,10 +191,8 @@ This directory contains three types of Python codes:
 
 ### Analyses
 
-- 📁 The `Results` directory archives analysis results from research focusing on the interaction between feelings of uncertainty, negative sentiments, the level of evidence, and the stringency of health measures during the COVID-19 pandemic in Quebec.
+- 📁 The `Results` directory archives analysis results from a research project focusing on the interaction between feelings of uncertainty, negative sentiments, the level of evidence, and the stringency of health measures during the COVID-19 pandemic in Quebec.
 
-## Coming Soon
+## Upcoming Updates
 
-A comprehensive database containing differentiated indices of feelings of uncertainty and negative sentiments by category (political decision-makers, public health representatives, experts, and journalists).
-
-
+Differentiated indices of sentiments of uncertainty and negative sentiments by category (political decision-makers, public health representatives, experts, and journalists).
