@@ -57,6 +57,24 @@ Ce dossier contient trois types de codes Python :
 
 ### Base de données numériques
 
+- 📄 `QC.unc.data_daily.csv` : est le fichier contenant l'ensemble de la base de données traitées par le code et utilisées dans la production des modèles OLS, SEM et des résultats graphiques. Voici 
+   - ID : Numérotation de chaque jour 
+   - date : Date
+   - wave : Vague de contamination officielle définie par l'INSPQ
+   - SPHM : Indice de sévérité des mesures sanitaires
+   - SI : Indice de sévérité des mesures sanitaires + mesures vaccinales
+   - UNC : Indice des sentiments d'incertitude des décideurs et des représentants de la Santé publique (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault, M. Arruda, M. Boileau)
+   - EVD : Indice du niveau de preuve scientifique des décideurs (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
+   - NEG : Indice des sentiments négatifs concerant la pandémie des décideurs (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
+   - CC100 : Indice mis sur 100 du nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ)
+   - CD100 : Indice mis sur 100 du nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ)
+   - TH100 : Indice mis sur 100 du nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ)
+   - VAX100 : Indice mis sur 100 du nombre de personnes vaccinées contre la COVID-19 par jour (données de l'INSPQ)
+   - CC : Nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ)
+   - CD : Nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ)
+   - TH : Nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ)
+   - VAX : Nombre de personnes vaccinées contre la COVID-19 par jour (données de l'INSPQ)
+   
 - 📄 `QC.COVID_data` : rassemble les données épidémiologiques du Québec durant la pandémie, [issues de l'Institut national de santé publique du Québec (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
 
 - 📄 `QC.IRPPstringency_data.csv` : détaille la sévérité des mesures sanitaires, [provenant de l'Institut de recherche en politiques publiques (IRPP)](https://centre.irpp.org/fr/data/politiques-provinciales-sur-la-pandemie-de-covid-19/).
