@@ -86,7 +86,7 @@ writeLines(summary_results, full_path)
 
 
 # CREATING SEM PLOT #
-file_name <- "QC.unc.results_SEM_plot.pdf"
+file_name <- "QC.unc.results_SEM_plot.png"
 full_path <- file.path(export_path, file_name)
 
 # Start PNG device
