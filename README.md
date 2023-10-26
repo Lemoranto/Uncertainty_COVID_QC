@@ -46,34 +46,31 @@ Ce dossier contient trois types de codes Python :
 
 ## Description des données
 
-### Base de données textuelles
-
-- 📁 Dossier `Press_conferences` archive toutes les conférences du gouvernement du Québec durant la pandémie. Elles sont aussi compilées dans 📄 `QC.conf_texts.csv`.
-
-- 📁 Les différents dossiers d'extractions contenus dans `recup_transcriptions` contiennent les conférences de presse extraites du site de l'Assemblée nationale.
-
-- 📁 Dossier `Texts_youtube` (situé dans `Press_conferences`) : Contient les conférences de presse qui ont été automatiquement transcrites puis validées manuellement.
-   - 📁 Sous-dossier `Original_autotranscribed` : Contient les transcriptions avant relecture.
-
 ### Base de données numériques
 
-- 📄 `QC.unc.data_daily.csv` : est le fichier contenant l'ensemble de la base de données traitées par le code et utilisées dans la production des modèles OLS, SEM et des résultats graphiques. Voici 
-   - ID : Numérotation de chaque jour 
+- 📄 `QC.unc.data_daily.csv` : est le fichier contenant les indices principaux produits par le code et utilisées dans la production des modèles OLS, SEM et des résultats graphiques concernant l'interaction entre sentinements d'incertitude des décideurs, sentiments négatifs, niveau de preuve et sévérité des mesures sanitaires mises en oeuvre durant la pandémie au Québec. Voici la notice des indices :  
+   - ID : Numérotation hebdomadaire
    - date : Date
-   - wave : Vague de contamination officielle définie par l'INSPQ
-   - SPHM : Indice de sévérité des mesures sanitaires
-   - SI : Indice de sévérité des mesures sanitaires + mesures vaccinales
+   - wave : Vagues de contamination officielle [définies par l'INSPQ](https://www.inspq.qc.ca/covid-19/donnees/ligne-du-temps)
+   - SPHM : Indice de sévérité des mesures sanitaires (données de l'IRPP, voir ci-dessous)
+   - SI : Indice de sévérité des mesures sanitaires + mesures vaccinales (données de l'IRPP, voir ci-dessous)
    - UNC : Indice des sentiments d'incertitude des décideurs et des représentants de la Santé publique (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault, M. Arruda, M. Boileau)
    - EVD : Indice du niveau de preuve scientifique des décideurs (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
    - NEG : Indice des sentiments négatifs concerant la pandémie des décideurs (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
-   - CC100 : Indice mis sur 100 du nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ)
-   - CD100 : Indice mis sur 100 du nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ)
-   - TH100 : Indice mis sur 100 du nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ)
-   - VAX100 : Indice mis sur 100 du nombre de personnes vaccinées contre la COVID-19 par jour (données de l'INSPQ)
-   - CC : Nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ)
-   - CD : Nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ)
-   - TH : Nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ)
-   - VAX : Nombre de personnes vaccinées contre la COVID-19 par jour (données de l'INSPQ)
+   - CC100 : Indice mis sur 100 du nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - CD100 : Indice mis sur 100 du nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - TH100 : Indice mis sur 100 du nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - VAX100 : Indice mis sur 100 du nombre de personnes vaccinées contre la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - CC : Nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - CD : Nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - TH : Nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   - VAX : Nombre de personnes vaccinées contre la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
+   
+- 📄 `QC.Conf_pers_clean.csv` : est la base de données contenant l'ensemble des noms et prénoms des personnes s'étant exprimées lors des conférences de presse identifiées par le code
+
+- 📄 `QC.Conf_journalis_clean.csv` : est la base de données contenant l'ensemble des noms et prénoms des journalistes s'étant exprimés lors des conférences de presse, ainsi que leurs médias correspondants, identifiés par le code
+
+- 📄 `QC.Conf_decideurs_incipitclean.csv` : est la base de données contenant l'ensemble des noms et prénoms des décideurs/représentants de la santé publique/experts/invités s'étant exprimés lors des conférences de presse identifiés par le code
    
 - 📄 `QC.COVID_data` : rassemble les données épidémiologiques du Québec durant la pandémie, [issues de l'Institut national de santé publique du Québec (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
 
@@ -81,6 +78,16 @@ Ce dossier contient trois types de codes Python :
 
 - 📄 `QC.vax_data` : contient les données de vaccination, [fournies par l'Institut national de santé publique du Québec (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
 
+### Base de données textuelles
+
+- 📄 `QC.conf_texts.csv` : compilation de l'ensemble des conférences de presse du gouvernement du Québec concernant la pandémie de COVID-19.
+
+- 📁 Dossier `Press_conferences` archive toutes les conférences du gouvernement du Québec durant la pandémie individuellement. 
+
+- 📁 Les différents dossiers d'extractions contenus dans `recup_transcriptions` contiennent les conférences de presse extraites du site de l'Assemblée nationale.
+
+- 📁 Dossier `Texts_youtube` (situé dans `Press_conferences`) : Contient les conférences de presse qui ont été automatiquement transcrites puis validées manuellement.
+   - 📁 Sous-dossier `Original_autotranscribed` : Contient les transcriptions avant relecture.
 
 
 # Code and Database
@@ -130,21 +137,48 @@ This directory contains three types of Python codes:
 
 ## Data Description
 
-### Textual Database
-
-- 📁 Directory `Press_conferences` archives all the press conferences by the Quebec government during the pandemic. They are also compiled in 📄 `QC.conf_texts.csv`.
-
-- 📁 Various extraction directories within `recup_transcriptions` contain press conferences extracted from the National Assembly's website.
-
-- 📁 Directory `Texts_youtube` (located within `Press_conferences`): Contains press conferences that were automatically transcribed and then manually validated.
-   - 📁 Sub-directory `Original_autotranscribed`: Contains transcriptions before review.
-
 ### Numerical Database
 
-- 📄 `QC.COVID_data`: Compiles epidemiological data [from Quebec during the pandemic, sourced from the Quebec National Institute of Public Health (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
+- 📄 `QC.unc.data_daily.csv`: This file contains the main indices produced by the code and used in the development of OLS, SEM models, and graphical results concerning the interaction between decision-makers' uncertainty sentiments, negative sentiments, evidence level, and the stringency of health measures implemented during the pandemic in Quebec. Here is a summary of the indices:
+   - ID: Weekly numbering
+   - date: Date
+   - wave: Official contamination waves [defined by INSPQ](https://www.inspq.qc.ca/covid-19/donnees/ligne-du-temps)
+   - SPHM: Policy stringency index for NPI excluding vaccination (data from IRPP, see below)
+   - SI: Stringency Index including health and vaccination measures (data from IRPP, see below)
+   - UNC: Uncertainty Sentiment Index of decision-makers and public health representatives (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault, M. Arruda, M. Boileau)
+   - EVD: Evidence Level Index of decision-makers (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
+   - NEG: Negative Sentiment Index concerning the pandemic from decision-makers (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
+   - CC100: Index scaled to 100 of the daily confirmed COVID-19 cases (data from INSPQ, see below)
+   - CD100: Index scaled to 100 of the daily confirmed COVID-19 deaths (data from INSPQ, see below)
+   - TH100: Index scaled to 100 of daily COVID-19 hospitalizations (data from INSPQ, see below)
+   - VAX100: Index scaled to 100 of daily COVID-19 vaccinations (data from INSPQ, see below)
+   - CC: Number of daily confirmed COVID-19 cases (data from INSPQ, see below)
+   - CD: Number of daily confirmed COVID-19 deaths (data from INSPQ, see below)
+   - TH: Number of daily COVID-19 hospitalizations (data from INSPQ, see below)
+   - VAX: Number of daily COVID-19 vaccinations (data from INSPQ, see below)
+   
+- 📄 `QC.Conf_pers_clean.csv`: This database contains the names and first names of individuals who spoke at the press conferences identified by the code.
 
-- 📄 `QC.IRPPstringency_data.csv`: Details the severity of health measures, [sourced from the Public Policy Research Institute (IRPP)](https://centre.irpp.org/fr/data/politiques-provinciales-sur-la-pandemie-de-covid-19/).
+- 📄 `QC.Conf_journalis_clean.csv`: This database contains the names and first names of journalists who spoke at the press conferences, along with their corresponding media outlets, identified by the code.
+
+- 📄 `QC.Conf_decideurs_incipitclean.csv`: This database contains the names and first names of decision-makers/public health representatives/experts/guests who spoke at the press conferences identified by the code.
+
+- 📄 `QC.COVID_data`: Compiles epidemiological data from Quebec during the pandemic, [sourced from the Quebec National Institute of Public Health (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
+
+- 📄 `QC.IRPPstringency_data.csv`: Details the stringency of health measures, [sourced from the Public Policy Research Institute (IRPP)](https://centre.irpp.org/fr/data/politiques-provinciales-sur-la-pandemie-de-covid-19/).
 
 - 📄 `QC.vax_data`: Contains vaccination data, [provided by the Quebec National Institute of Public Health (INSPQ)](https://www.inspq.qc.ca/covid-19/donnees).
+
+### Textual Database
+
+- 📄 `QC.conf_texts.csv`: A compilation of all press conferences held by the Quebec government regarding the COVID-19 pandemic.
+
+- 📁 Directory `Press_conferences` archives each of the Quebec government's press conferences during the pandemic individually.
+
+- 📁 Various extraction folders within `recup_transcriptions` contain press conferences extracted from the National Assembly's website.
+
+- 📁 Directory `Texts_youtube` (located in `Press_conferences`): Contains press conferences that were automatically transcribed and then manually validated.
+   - 📁 Sub-directory `Original_autotranscribed`: Contains the transcriptions before review.
+
 
 
