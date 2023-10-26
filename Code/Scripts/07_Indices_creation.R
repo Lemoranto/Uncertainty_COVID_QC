@@ -13,13 +13,6 @@ dictionary_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Diction
 input_file <- file.path(import_data_path, "QC.conf_fullannotated.csv")
 QC.unc.data_persanddict <- read.csv(input_file, header = TRUE, sep=",")
 
-QC.unc.data_persanddict$X<-NULL
-QC.unc.data_persanddict$X.1<-NULL
-QC.unc.data_persanddict$X.2<-NULL
-QC.unc.data_persanddict$X.3<-NULL
-QC.unc.data_persanddict$X.4<-NULL
-QC.unc.data_persanddict$X.5<-NULL
-
 
 # Deleting useless transcripts (small press briefings and conferences before 2020)
 QC.unc.data_persanddict <- subset(QC.unc.data_persanddict, Points_presse_conf != 1)
@@ -149,7 +142,7 @@ uncertainty_count_persons <- uncertainty_count_persons %>%
               summarise(negative_polarity_dictionary_count = sum(polarity_sentence < 0 & dictionary_strong == 1 & (Legault == 1 | Dubé == 1 | McCann == 1 | Guilbault == 1)),
                         total_dictionary_count_2 = sum(dictionary_strong == 1 & (Legault == 1 | Dubé == 1 | McCann == 1 | Guilbault == 1))),
             by = "doc_id") %>%
-  mutate(Negative_sentiments = (negative_polarity_dictionary_count / total_dictionary_count_2)*100)
+  mutate(NEG = (negative_polarity_dictionary_count / total_dictionary_count_2)*100)
 
 # Adding the variable for proportion of sentences with expertise + dictionary
 uncertainty_count_persons <- uncertainty_count_persons %>%
@@ -158,7 +151,7 @@ uncertainty_count_persons <- uncertainty_count_persons %>%
               summarise(expertise_count = sum(expertise == 1 & dictionary_strong == 1  & (Legault == 1 | Dubé == 1 | McCann == 1 | Guilbault == 1)),
                         total_expertise_count = sum(dictionary_strong == 1 & (Legault == 1 | Dubé == 1 | McCann == 1 | Guilbault == 1))),
             by = "doc_id") %>%
-  mutate(Evidence = (expertise_count / total_expertise_count)*100)
+  mutate(EVD = (expertise_count / total_expertise_count)*100)
 
 # Deleting count errors
 variables <- c("Arruda_sentence_count", "Legault_sentence_count", "Boileau_sentence_count", "McCann_sentence_count",
@@ -257,7 +250,7 @@ uncertainty_count_persons <- df
 
 uncertainty_count_persons$full_uncdict_sen <- coalesce(uncertainty_count_persons$Legault_uncertaintydictionary_per_sentence, 0) + coalesce(uncertainty_count_persons$Dubé_uncertaintydictionary_per_sentence, 0)+ coalesce(uncertainty_count_persons$Arruda_uncertaintydictionary_per_sentence, 0)+ coalesce(uncertainty_count_persons$McCann_uncertaintydictionary_per_sentence, 0 )+ coalesce(uncertainty_count_persons$Guilbault_uncertaintydictionary_per_sentence, 0 )+ coalesce(uncertainty_count_persons$Boileau_uncertaintydictionary_per_sentence, 0 )
 uncertainty_count_persons$full_uncdict_sen[uncertainty_count_persons$full_uncdict_sen == 0] <- NA
-uncertainty_count_persons$Uncertainty <- (uncertainty_count_persons$full_uncdict_sen - min(uncertainty_count_persons$full_uncdict_sen, na.rm = TRUE)) / (max(uncertainty_count_persons$full_uncdict_sen, na.rm = TRUE) - min(uncertainty_count_persons$full_uncdict_sen, na.rm = TRUE)) * 100 
+uncertainty_count_persons$UNC <- (uncertainty_count_persons$full_uncdict_sen - min(uncertainty_count_persons$full_uncdict_sen, na.rm = TRUE)) / (max(uncertainty_count_persons$full_uncdict_sen, na.rm = TRUE) - min(uncertainty_count_persons$full_uncdict_sen, na.rm = TRUE)) * 100 
 uncertainty_count_persons[is.na(uncertainty_count_persons)] <- NA
 
 
@@ -273,10 +266,10 @@ write.csv(uncertainty_count_persons, file = output_file, row.names = FALSE)
 doublons <- uncertainty_count_persons %>%
   group_by(ID) %>%
   filter(n() > 1) %>%
-  select(date, Uncertainty, doc_id)
+  select(date, UNC, doc_id)
 
 # Reduce the dataset to selected columns
-redux <- uncertainty_count_persons %>% select(ID, date, Uncertainty)
+redux <- uncertainty_count_persons %>% select(ID, date, UNC)
 
 
 # Validate the variables
