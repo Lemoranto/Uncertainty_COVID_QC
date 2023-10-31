@@ -97,7 +97,11 @@ Ce dossier contient trois types de codes Python :
 
 Indices différenciés des sentiments d'incertitude et des sentiments négatifs par catégorie (décideurs politiques, représentants de la santé publique, experts et journalistes).
 
+## Membres du projet
 
+[Antoine Lemor](https://pol.umontreal.ca/repertoire-departement/charges/charge-de-cours/in/in35295/sg/Antoine%20Lemor/), département de science politique, Université de Montréal.
+
+[Éric Montpetit](https://pol.umontreal.ca/repertoire-departement/professeurs/professeur/in/in14714/sg/%C3%89ric%20Montpetit/), département de science politique, Université de Montréal.
 
 # Code and Database
 
@@ -196,3 +200,9 @@ This directory contains three types of Python codes:
 ## Upcoming Updates
 
 Differentiated indices of sentiments of uncertainty and negative sentiments by category (political decision-makers, public health representatives, experts, and journalists).
+
+## Project Members
+
+[Antoine Lemor](https://pol.umontreal.ca/repertoire-departement/charges/charge-de-cours/in/in35295/sg/Antoine%20Lemor/), Department of Political Science, University of Montreal.
+
+[Éric Montpetit](https://pol.umontreal.ca/repertoire-departement/professeurs/professeur/in/in14714/sg/%C3%89ric%20Montpetit/), Department of Political Science, University of Montreal.
