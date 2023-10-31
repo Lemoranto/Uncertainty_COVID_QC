@@ -55,8 +55,8 @@ Ce dossier contient trois types de codes Python :
    - SPHM : Indice de sévérité des mesures sanitaires (données de l'IRPP, voir ci-dessous)
    - SI : Indice de sévérité des mesures sanitaires + mesures vaccinales (données de l'IRPP, voir ci-dessous)
    - UNC : Indice des sentiments d'incertitude des décideurs et des représentants de la Santé publique (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault, M. Arruda, M. Boileau)
-   - EVD : Indice du niveau de preuve scientifique des décideurs (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
-   - NEG : Indice des sentiments négatifs concerant la pandémie des décideurs (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
+   - EVD : Indice du niveau de preuve scientifique des décideurs politiques (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
+   - NEG : Indice des sentiments négatifs concernant la pandémie des décideurs politiques (M. Legault, Mme McCann, M. Dubé, Mme. Guilbault)
    - CC100 : Indice sur 100 du nombre de cas confirmés de COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
    - CD100 : Indice sur 100 du nombre de morts confirmées de la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
    - TH100 : Indice sur 100 du nombre d'hospitalisations dues à la COVID-19 par jour (données de l'INSPQ, voir ci-dessous)
@@ -200,9 +200,12 @@ This directory contains three types of Python codes:
 ## Upcoming Updates
 
 Differentiated indices of sentiments of uncertainty and negative sentiments by category (political decision-makers, public health representatives, experts, and journalists).
+<<<<<<< HEAD
 
 ## Project Members
 
 [Antoine Lemor](https://pol.umontreal.ca/repertoire-departement/charges/charge-de-cours/in/in35295/sg/Antoine%20Lemor/), Department of Political Science, University of Montreal.
 
 [Éric Montpetit](https://pol.umontreal.ca/repertoire-departement/professeurs/professeur/in/in14714/sg/%C3%89ric%20Montpetit/), Department of Political Science, University of Montreal.
+=======
+>>>>>>> 11ad4fac2171ce620c83e25632137832e507f2a8
