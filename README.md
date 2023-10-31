@@ -207,5 +207,3 @@ Differentiated indices of sentiments of uncertainty and negative sentiments by c
 [Antoine Lemor](https://pol.umontreal.ca/repertoire-departement/charges/charge-de-cours/in/in35295/sg/Antoine%20Lemor/), Department of Political Science, University of Montreal.
 
 [Éric Montpetit](https://pol.umontreal.ca/repertoire-departement/professeurs/professeur/in/in14714/sg/%C3%89ric%20Montpetit/), Department of Political Science, University of Montreal.
-=======
->>>>>>> 11ad4fac2171ce620c83e25632137832e507f2a8
