@@ -1,6 +1,6 @@
 # Base path
-import_data_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Data/Database"
-export_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Data/Results"
+import_data_path <- "/Users/antoine/Documents/GitHub.nosync/Uncertainty_COVID_QC/Data/Database"
+export_path <- "/Users/antoine/Documents/GitHub.nosync/Uncertainty_COVID_QC/Data/Results"
 
 # Importing the database 
 input_file <- file.path(import_data_path, "QC.unc.data_daily.csv")
@@ -23,16 +23,16 @@ se_fill <- "#D3D3D3"
 
 p <- ggplot(data = reg_data_daily, aes(x = date)) +
   geom_smooth(aes(y = SPHM, color = "Stringency"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
-  geom_smooth(aes(y = EVD, color = "Evidence"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
-  geom_smooth(aes(y = UNC, color = "Uncertainty"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
-  geom_smooth(aes(y = NEG, color = "Negative sentiments"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
+  geom_smooth(aes(y = EVD, color = "Scientific Statements"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
+  geom_smooth(aes(y = UNC, color = "Uncertainty Sentiments"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
+  geom_smooth(aes(y = NEG, color = "Negative Sentiments"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
   scale_color_manual(name = NULL, 
                      values = c("Stringency" = "#df0806",
-                                "Uncertainty" = "black",
-                                "Evidence" = "#006400",
-                                "Negative sentiments" = "grey",
-                                "Uncertainty" = "black"),
-                     breaks = c("Stringency", "Projections", "Uncertainty", "Negative sentiments", "Evidence")) +
+                                "Uncertainty Sentiments" = "black",
+                                "Scientific Statements" = "#006400",
+                                "Negative Sentiments" = "grey",
+                                "Uncertainty Sentiments" = "black"),
+                     breaks = c("Stringency", "Uncertainty Sentiments", "Negative Sentiments", "Scientific Statements")) +
   scale_y_continuous(limits = c(0, NA)) +
   theme(plot.title = element_text(face = "bold", size = 25, hjust = 0.5),
         axis.text.y = element_text(face = "bold", size = 25),
@@ -53,7 +53,7 @@ p <- ggplot(data = reg_data_daily, aes(x = date)) +
 print(p)
 
 ## Export the graph
-ggsave(filename = "QC.unc.results_Graph.pdf", plot = p, path = export_path, width = 16, height = 12, units = "in")
+ggsave(filename = "QC.unc.results_Graph.pdf", plot = p, path = export_path, width = 20, height = 14, units = "in")
 
 
 
@@ -98,23 +98,23 @@ for(UNC_val in levels_UNC) {
 
 # Plotting
 p <- ggplot(simulation_data_EVD, aes(x = EVD, y = SPHM, color = as.factor(UNC))) +
-  geom_line(size = 1.5) + 
-  labs(title = "Effect of Evidence on Policy Stringency as a Function of Uncertainty",
-       x = "Evidence Level",
+  geom_line(size = 2) + 
+  labs(title = "Effect of Scientific Statements on Policy Stringency as a Function of Uncertainty Sentiments",
+       x = "Scientific Statements Level",
        y = "Projected Stringency",
-       color = "Uncertainty Level") +
+       color = "Uncertainty Sentiments Level") +
   theme_minimal() +
   theme(
-    plot.title = element_text(size = 20),
-    axis.title.x = element_text(size = 17),
-    axis.title.y = element_text(size = 17),
-    axis.text.x = element_text(size = 17)
+    plot.title = element_text(size = 18),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(size = 15)
   )  
 
 print(p)
 
 # Export the plot
-ggsave(filename = "QC.unc.results_OLS4_projection.pdf", plot = p, path = export_path, width = 10, height = 8)
+ggsave(filename = "QC.unc.results_OLS4_projection.pdf", plot = p, path = export_path, width = 12, height =10)
 
 
 

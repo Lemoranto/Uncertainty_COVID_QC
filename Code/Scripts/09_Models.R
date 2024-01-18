@@ -1,6 +1,6 @@
 # Base path
-import_data_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Data/Database"
-export_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Data/Results"
+import_data_path <- "/Users/antoine/Documents/GitHub.nosync/Uncertainty_COVID_QC/Data/Database"
+export_path <- "/Users/antoine/Documents/GitHub.nosync/Uncertainty_COVID_QC/Data/Results"
 
 # Importing the database 
 input_file <- file.path(import_data_path, "QC.unc.data_daily.csv")

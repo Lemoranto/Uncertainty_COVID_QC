@@ -607,7 +607,349 @@ for (i in 1:nrow(QC.conf_token_uncertainty)) {
     }
   }
   QC.conf_token_uncertainty[i, "Boileau"] <- boileau
-}    
+}  
+
+# Identify Boileau (next National director of public health after M. Arruda)
+
+boileau <- 0
+prev_doc_id <- QC.conf_token_uncertainty[1, "doc_id"]
+for (i in 1:nrow(QC.conf_token_uncertainty)) {
+  if (QC.conf_token_uncertainty[i, "doc_id"] != prev_doc_id) {
+    boileau <- 0
+    prev_doc_id <- QC.conf_token_uncertainty[i, "doc_id"]
+  }
+  if (QC.conf_token_uncertainty[i, "token"] == "M."| QC.conf_token_uncertainty[i, "token"] == "Dr") {
+    if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Boileau") {
+      if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+        boileau <- 1
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "M."|QC.conf_token_uncertainty[i, "token"] == "Dr") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Boileau") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == "(") {
+          if (i + 3 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 3, "token"] == "Luc") {
+            if (i + 4 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 4, "token"] == ")") {
+              if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+                boileau <- 1
+              }
+            }
+          }}}}
+  } else if (boileau == 1) {
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Boileau") {
+        if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+          boileau <- 0
+        }}
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Boileau") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          boileau <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Le" | QC.conf_token_uncertainty[i, "token"] == "La") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == "Modérateur" | QC.conf_token_uncertainty[i + 1, "token"] == "Modératrice")) {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          boileau <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Journaliste") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == ":")) {
+        boileau <- 0
+      }
+    }
+  }
+  QC.conf_token_uncertainty[i, "Boileau"] <- boileau
+}  
+
+
+# Identify Drouin (public health expert)
+
+drouin <- 0
+prev_doc_id <- QC.conf_token_uncertainty[1, "doc_id"]
+for (i in 1:nrow(QC.conf_token_uncertainty)) {
+  if (QC.conf_token_uncertainty[i, "doc_id"] != prev_doc_id) {
+    drouin <- 0
+    prev_doc_id <- QC.conf_token_uncertainty[i, "doc_id"]
+  }
+  if (QC.conf_token_uncertainty[i, "token"] == "Mme"| QC.conf_token_uncertainty[i, "token"] == "Dr") {
+    if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Drouin") {
+      if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+        drouin <- 1
+      }
+      if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == "(") {
+        if (i + 3 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 3, "token"] == "Mylène") {
+          if (i + 4 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 4, "token"] == ")") {
+            if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+              drouin <- 1
+            }
+          }
+        }
+      }
+    }
+  } else if (drouin == 1) {
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Drouin") {
+        drouin <- 0
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Le" | QC.conf_token_uncertainty[i, "token"] == "La") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == "Modérateur" | QC.conf_token_uncertainty[i + 1, "token"] == "Modératrice")) {
+        drouin <- 0
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Journaliste") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == ":")) {
+        drouin <- 0
+      }
+    }
+  }
+  QC.conf_token_uncertainty[i, "Drouin"] <- drouin
+}
+
+# Identify Litvak (public health expert)
+
+litvak <- 0
+prev_doc_id <- QC.conf_token_uncertainty[1, "doc_id"]
+for (i in 1:nrow(QC.conf_token_uncertainty)) {
+  if (QC.conf_token_uncertainty[i, "doc_id"] != prev_doc_id) {
+    litvak <- 0
+    prev_doc_id <- QC.conf_token_uncertainty[i, "doc_id"]
+  }
+  if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Dr") {
+    if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Litvak") {
+      if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+        litvak <- 1
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Dr") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Litvak") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == "(") {
+          if (i + 3 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 3, "token"] == "Éric") {
+            if (i + 4 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 4, "token"] == ")") {
+              if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+                litvak <- 1
+              }
+            }
+          }
+        }
+      }
+    }
+  } else if (litvak == 1) {
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Litvak") {
+        if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+          litvak <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Litvak") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          litvak <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Le" | QC.conf_token_uncertainty[i, "token"] == "La") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == "Modérateur" | QC.conf_token_uncertainty[i + 1, "token"] == "Modératrice")) {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          litvak <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Journaliste") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == ":")) {
+        litvak <- 0
+      }
+    }
+  }
+  QC.conf_token_uncertainty[i, "Litvak"] <- litvak
+}
+
+# Identify De Guise (public health expert)
+
+de_guise <- 0
+prev_doc_id <- QC.conf_token_uncertainty[1, "doc_id"]
+for (i in 1:nrow(QC.conf_token_uncertainty)) {
+  if (QC.conf_token_uncertainty[i, "doc_id"] != prev_doc_id) {
+    de_guise <- 0
+    prev_doc_id <- QC.conf_token_uncertainty[i, "doc_id"]
+  }
+  if (QC.conf_token_uncertainty[i, "token"] == "Mme" | QC.conf_token_uncertainty[i, "token"] == "Dr") {
+    if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "De") {
+      if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == "Guise") {
+        if (i + 3 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 3, "token"] == ":") {
+          de_guise <- 1
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Mme" | QC.conf_token_uncertainty[i, "token"] == "Dr") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "De") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == "Guise") {
+          if (i + 3 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 3, "token"] == "(") {
+            if (i + 4 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 4, "token"] == "Michèle") {
+              if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ")") {
+                if (i + 6 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 6, "token"] == ":") {
+                  de_guise <- 1
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  } else if (de_guise == 1) {
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "De") {
+        if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+          de_guise <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "De") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          de_guise <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Le" | QC.conf_token_uncertainty[i, "token"] == "La") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == "Modérateur" | QC.conf_token_uncertainty[i + 1, "token"] == "Modératrice")) {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          de_guise <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Journaliste") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == ":")) {
+        de_guise <- 0
+      }
+    }
+  }
+  QC.conf_token_uncertainty[i, "De_Guise"] <- de_guise
+}
+
+
+# Identify Raynault (public health expert)
+
+raynault <- 0
+prev_doc_id <- QC.conf_token_uncertainty[1, "doc_id"]
+for (i in 1:nrow(QC.conf_token_uncertainty)) {
+  if (QC.conf_token_uncertainty[i, "doc_id"] != prev_doc_id) {
+    raynault <- 0
+    prev_doc_id <- QC.conf_token_uncertainty[i, "doc_id"]
+  }
+  if (QC.conf_token_uncertainty[i, "token"] == "Mme" | QC.conf_token_uncertainty[i, "token"] == "Dr") {
+    if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Raynault") {
+      if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+        raynault <- 1
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Mme" | QC.conf_token_uncertainty[i, "token"] == "Dr") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Raynault") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == "(") {
+          if (i + 3 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 3, "token"] == "Marie-France") {
+            if (i + 4 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 4, "token"] == ")") {
+              if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+                raynault <- 1
+              }
+            }
+          }
+        }
+      }
+    }
+  } else if (raynault == 1) {
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Raynault") {
+        if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+          raynault <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Raynault") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          raynault <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Le" | QC.conf_token_uncertainty[i, "token"] == "La") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == "Modérateur" | QC.conf_token_uncertainty[i + 1, "token"] == "Modératrice")) {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          raynault <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Journaliste") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == ":")) {
+        raynault <- 0
+      }
+    }
+  }
+  QC.conf_token_uncertainty[i, "Raynault"] <- raynault
+}
+
+# Identify Longtin (public health expert)
+
+longtin <- 0
+prev_doc_id <- QC.conf_token_uncertainty[1, "doc_id"]
+for (i in 1:nrow(QC.conf_token_uncertainty)) {
+  if (QC.conf_token_uncertainty[i, "doc_id"] != prev_doc_id) {
+    longtin <- 0
+    prev_doc_id <- QC.conf_token_uncertainty[i, "doc_id"]
+  }
+  if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Dr") {
+    if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Longtin") {
+      if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+        longtin <- 1
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Dr") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] == "Longtin") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == "(") {
+          if (i + 3 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 3, "token"] == "Jean") {
+            if (i + 4 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 4, "token"] == ")") {
+              if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+                longtin <- 1
+              }
+            }
+          }
+        }
+      }
+    }
+  } else if (longtin == 1) {
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Longtin") {
+        if (i + 5 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 5, "token"] == ":") {
+          longtin <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "M." | QC.conf_token_uncertainty[i, "token"] == "Mme") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 1, "token"] != "Longtin") {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          longtin <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Le" | QC.conf_token_uncertainty[i, "token"] == "La") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == "Modérateur" | QC.conf_token_uncertainty[i + 1, "token"] == "Modératrice")) {
+        if (i + 2 <= nrow(QC.conf_token_uncertainty) & QC.conf_token_uncertainty[i + 2, "token"] == ":") {
+          longtin <- 0
+        }
+      }
+    }
+    if (QC.conf_token_uncertainty[i, "token"] == "Journaliste") {
+      if (i + 1 <= nrow(QC.conf_token_uncertainty) & (QC.conf_token_uncertainty[i + 1, "token"] == ":")) {
+        longtin <- 0
+      }
+    }
+  }
+  QC.conf_token_uncertainty[i, "Longtin"] <- longtin
+}
+
 
 
 # Export database
@@ -1725,9 +2067,9 @@ models[['OLS3']] =lm(lead(SPHM, 1) ~ UNC+EVD+CD100+CC100+TH100+NEG+lag(SPHM, 1),
 models[['OLS4']] =lm(lead(SPHM, 1) ~ UNC+EVD+CD100+CC100+TH100+NEG+UNC:EVD+lag(SPHM, 1), data = reg_data_daily[reg_data_daily$wave %in% c(1,2,3,4,5),])
 
 
-cm <- c( '(Intercept)' = '(Intercept)', 'lag(SPHM, 1)'='Stringency - 1', 'CD100' = 'Death','CC100'= 'Cases' , 'TH100'='Hospitalizations','UNC'='Uncertainty' , 'NEG'='Negative sentiments','EVD'='Evidence',
-         'UNC:EVD'='Uncertainty * Evidence')
-cap <- 'Table 1. Effects of Uncertainty, Evidence, Negative Sentiments and Epidemiological Variable on Policy Stringency: Results from OLS Regression Models'
+cm <- c( '(Intercept)' = '(Intercept)', 'lag(SPHM, 1)'='Stringency - 1', 'CD100' = 'Death','CC100'= 'Cases' , 'TH100'='Hospitalizations','UNC'='Uncertainty sentiments' , 'NEG'='Negative sentiments','EVD'='Scientific statements',
+         'UNC:EVD'='Uncertainty sentiments * Scientific statements')
+cap <- 'Table 1. Effects of Uncertainty sentiments, Scientific statements, Negative Sentiments and Epidemiological Variables on Policy Stringency: Results from OLS Regression Models'
 tab<-modelsummary(models, output='flextable',  coef_map=cm, stars =TRUE, title=cap)
 
 # Printing results
@@ -1847,22 +2189,23 @@ library(tidyverse)
 
 # Graph
 reg_data_daily$date <- as.Date(reg_data_daily$date)
+
 wave_dates <- c("2020-02-25", "2020-08-23", "2021-03-20", "2021-07-17", "2021-12-05", "2022-03-12")
 wave_labels <- c("Wave 1", "Wave 2", "Wave 3", "Wave 4", "Wave 5", "Wave 6")
 se_fill <- "#D3D3D3" 
 
 p <- ggplot(data = reg_data_daily, aes(x = date)) +
   geom_smooth(aes(y = SPHM, color = "Stringency"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
-  geom_smooth(aes(y = EVD, color = "Evidence"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
-  geom_smooth(aes(y = UNC, color = "Uncertainty"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
-  geom_smooth(aes(y = NEG, color = "Negative sentiments"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
+  geom_smooth(aes(y = EVD, color = "Scientific Statements"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
+  geom_smooth(aes(y = UNC, color = "Uncertainty Sentiments"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
+  geom_smooth(aes(y = NEG, color = "Negative Sentiments"), method = "loess", span = 0.37, se = FALSE, size = 2.3) +
   scale_color_manual(name = NULL, 
                      values = c("Stringency" = "#df0806",
-                                "Uncertainty" = "black",
-                                "Evidence" = "#006400",
-                                "Negative sentiments" = "grey",
-                                "Uncertainty" = "black"),
-                     breaks = c("Stringency", "Projections", "Uncertainty", "Negative sentiments", "Evidence")) +
+                                "Uncertainty Sentiments" = "black",
+                                "Scientific Statements" = "#006400",
+                                "Negative Sentiments" = "grey",
+                                "Uncertainty Sentiments" = "black"),
+                     breaks = c("Stringency", "Uncertainty Sentiments", "Negative Sentiments", "Scientific Statements")) +
   scale_y_continuous(limits = c(0, NA)) +
   theme(plot.title = element_text(face = "bold", size = 25, hjust = 0.5),
         axis.text.y = element_text(face = "bold", size = 25),
@@ -1880,10 +2223,8 @@ p <- ggplot(data = reg_data_daily, aes(x = date)) +
   annotate("text", x = as.Date(c("2020-05-01", "2020-11-15", "2021-04-28", "2021-09-05", "2022-01-01", "2022-04-12")), y = Inf, label = wave_labels, vjust = 2, hjust = 0, size = 7, color = "black", fontface = "bold") +
   scale_x_date(breaks = seq(as.Date("2020-03-01"), as.Date("2022-06-01"), by = "1 month"), date_labels = "%b-%Y")  
 
-print(p)
-
 ## Export the graph
-ggsave(filename = "QC.unc.results_Graph.pdf", plot = p, path = export_path, width = 16, height = 12, units = "in")
+ggsave(filename = "QC.unc.results_Graph.pdf", plot = p, path = export_path, width = 20, height = 14, units = "in")
 
 
 
@@ -1928,23 +2269,24 @@ for(UNC_val in levels_UNC) {
 
 # Plotting
 p <- ggplot(simulation_data_EVD, aes(x = EVD, y = SPHM, color = as.factor(UNC))) +
-  geom_line(size = 1.5) + 
-  labs(title = "Effect of Evidence on Policy Stringency as a Function of Uncertainty",
-       x = "Evidence Level",
+  geom_line(size = 2) + 
+  labs(title = "Effect of Scientific Statements on Policy Stringency as a Function of Uncertainty Sentiments",
+       x = "Scientific Statements Level",
        y = "Projected Stringency",
-       color = "Uncertainty Level") +
+       color = "Uncertainty Sentiments Level") +
   theme_minimal() +
   theme(
-    plot.title = element_text(size = 20),
-    axis.title.x = element_text(size = 17),
-    axis.title.y = element_text(size = 17),
-    axis.text.x = element_text(size = 17)
+    plot.title = element_text(size = 18),
+    axis.title.x = element_text(size = 15),
+    axis.title.y = element_text(size = 15),
+    axis.text.x = element_text(size = 15)
   )  
 
 print(p)
 
+
 # Export the plot
-ggsave(filename = "QC.unc.results_OLS4_projection.pdf", plot = p, path = export_path, width = 10, height = 8)
+ggsave(filename = "QC.unc.results_OLS4_projection.pdf", plot = p, path = export_path, width = 12, height = 10)
 
 
 

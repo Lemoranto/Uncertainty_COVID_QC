@@ -4,9 +4,9 @@ library(dplyr)
 library(readxl)
 
 # Base path
-import_data_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Data/Database"
-export_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Data/Database"
-dictionary_path <- "/Users/antoine/Documents/GitHub/Uncertainty_COVID_QC/Dictionnaries"
+import_data_path <- "/Users/antoine/Documents/GitHub.nosync/Uncertainty_COVID_QC/Data/Database"
+export_path <- "/Users/antoine/Documents/GitHub.nosync/Uncertainty_COVID_QC/Data/Database"
+dictionary_path <- "/Users/antoine/Documents/GitHub.nosync/Uncertainty_COVID_QC/Dictionnaries"
 
 
 # Importing the database and deleting useless variables
@@ -153,6 +153,16 @@ uncertainty_count_persons <- uncertainty_count_persons %>%
             by = "doc_id") %>%
   mutate(EVD = (expertise_count / total_expertise_count)*100)
 
+# Calcul de la proportion de phrases avec incertitude par conférence
+uncertainty_count_persons <- uncertainty_count_persons %>%
+  left_join(QC.unc.data_persanddict_redux %>%
+              group_by(doc_id) %>%
+              summarise(uncertainty_count = sum(uncertainty == 1),
+                        total_sentence_count = n()), 
+            by = "doc_id") %>%
+  mutate(UNC_PROP = (uncertainty_count / total_sentence_count) * 100) 
+
+
 # Deleting count errors
 variables <- c("Arruda_sentence_count", "Legault_sentence_count", "Boileau_sentence_count", "McCann_sentence_count",
                "Guilbault_sentence_count", "Dubé_sentence_count", "Massé_sentence_count", "Opatrny_sentence_count")
@@ -284,7 +294,7 @@ Evidence_validate <- QC.unc.data_persanddict_redux %>%
 
 # Save the dataframe as .csv
 output_file <- file.path(export_path, "EXP_validate.csv")
-write.csv(EXP_validate, file = output_file, row.names = FALSE)
+write.csv(Evidence_validate, file = output_file, row.names = FALSE)
 
 # Randomly select 100 rows based on the new conditions
 Uncertainty_validate <- QC.unc.data_persanddict_redux %>%
@@ -294,7 +304,7 @@ Uncertainty_validate <- QC.unc.data_persanddict_redux %>%
 
 # Save the new dataframe as .csv
 output_file <- file.path(export_path, "UDictFull_validate.csv")
-write.csv(UDictFull_validate, file = output_file, row.names = FALSE)
+write.csv(Uncertainty_validate, file = output_file, row.names = FALSE)
 
 # Randomly select 100 rows based on the specified conditions for PolDicFullneg
 PolDicFullneg_validate <- QC.unc.data_persanddict_redux %>%
