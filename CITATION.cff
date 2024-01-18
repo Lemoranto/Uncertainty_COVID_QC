@@ -14,7 +14,5 @@ BibTeX:
   title        = {QC.Uncertainty_COVID. Quebec COVID-19 Press Conferences: Uncertainty Analysis, Codes, and Textual Data Repository.},
   year         = 2023,
   publisher    = {Zenodo},
-  version      = {v1.0.1},
-  doi          = {},
-  url          = {}
+  version      = {v1.0.1}
 }
