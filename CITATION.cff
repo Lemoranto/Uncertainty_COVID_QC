@@ -1,12 +1,12 @@
 Citation:
-Lemor, Antoine. (2023). QC.Uncertainty_COVID. Quebec COVID-19 Press Conferences: Uncertainty Analysis, Codes, and Textual Data Repository. Zenodo. http://doi.org/10.5281/zenodo.10044991
+Lemor, Antoine. (2023). QC.Uncertainty_COVID. Quebec COVID-19 Press Conferences: Uncertainty Analysis, Codes, and Textual Data Repository. Zenodo. 
 
 How to Cite:
 To cite this database in your work, please use the following reference:
 Comment citer:
 Pour citer cette base de données dans vos travaux, veuillez utiliser la référence suivante:
 
-Lemor, Antoine. (2023). QC.Uncertainty_COVID. Quebec COVID-19 Press Conferences: Uncertainty Analysis, Codes, and Textual Data Repository. Zenodo. Disponible à l'adresse : http://doi.org/10.5281/zenodo.10044991
+Lemor, Antoine. (2023). QC.Uncertainty_COVID. Quebec COVID-19 Press Conferences: Uncertainty Analysis, Codes, and Textual Data Repository. Zenodo. Disponible à l'adresse : 
 
 BibTeX:
 @misc{lemor_2023_qc_uncertainty_covid,
@@ -14,7 +14,7 @@ BibTeX:
   title        = {QC.Uncertainty_COVID. Quebec COVID-19 Press Conferences: Uncertainty Analysis, Codes, and Textual Data Repository.},
   year         = 2023,
   publisher    = {Zenodo},
-  version      = {v1.0.0},
-  doi          = {10.5281/zenodo.10044991},
-  url          = {http://doi.org/10.5281/zenodo.10044991}
+  version      = {v1.0.1},
+  doi          = {},
+  url          = {}
 }
