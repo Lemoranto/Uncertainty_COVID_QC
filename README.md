@@ -4,7 +4,6 @@
 
 Cette plateforme propose des codes et des bases de données dédiés à la collecte, au traitement et à l'analyse des conférences de presse tenues par le gouvernement du Québec durant la pandémie de COVID-19. 
 
-
 Les analyses englobent :
 - L'identification des différents locuteurs (décideurs politiques, représentants de la santé publique, journalistes, genre).
 - Une analyse des marqueurs d'incertitude basée sur [Claveau et al. (2020)](https://papers.ssrn.com/abstract=3747158).
