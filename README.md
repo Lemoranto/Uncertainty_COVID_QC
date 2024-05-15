@@ -11,7 +11,7 @@ Les analyses englobent :
 - Une analyse de sentiments basée sur [Duval et Pétry (2016)](https://www.cambridge.org/core/journals/canadian-journal-of-political-science-revue-canadienne-de-science-politique/article/lanalyse-automatisee-du-ton-mediatique-construction-et-utilisation-de-la-version-francaise-du-lexicoder-sentiment-dictionary/7D61B73C4BA44EC0ECB654461F2D4B3C). 
 - Une analyse par dictionnaire permettant d'identifier les phrases relatives à divers sujets tels que la pandémie, la vaccination, les preuves scientifiques, ou encore les groupes cibles des mesures sanitaires.
 
-Remerciements au [CIRST]([http://](https://cirst.uqam.ca/) et précieux conseils.
+Remerciements au [CIRST](https://cirst.uqam.ca/) et précieux conseils.
 
 ## Brève description des codes
 
@@ -118,7 +118,7 @@ The analyses include:
 - A sentiment analysis based on [Duval and Pétry (2016)](https://www.cambridge.org/core/journals/canadian-journal-of-political-science-revue-canadienne-de-science-politique/article/lanalyse-automatisee-du-ton-mediatique-construction-et-utilisation-de-la-version-francaise-du-lexicoder-sentiment-dictionary/7D61B73C4BA44EC0ECB654461F2D4B3C).
 - A dictionary-based analysis to identify sentences related to various topics such as the pandemic, vaccination, scientific evidence, and target groups for health measures.
 
-Big thanks to the [CIRST]([http://](https://cirst.uqam.ca/) for their help and precious advice.
+Big thanks to the [CIRST](https://cirst.uqam.ca/) for their help and precious advice.
 
 ## Brief Code Description
 
