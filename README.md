@@ -49,7 +49,7 @@ Ce dossier contient trois types de codes Python :
 
 ## Description des données
 
-### Base de données numériques
+### Base de données 
 
 - 📄 `QC.unc.data_daily.csv` : est le fichier contenant les indices principaux produits par le code et utilisées dans la production des modèles OLS, SEM et des résultats graphiques concernant l'interaction entre sentinements d'incertitude des décideurs, sentiments négatifs, niveau de preuve et sévérité des mesures sanitaires mises en oeuvre durant la pandémie au Québec. Voici la notice des indices :  
    - ID : Numérotation hebdomadaire
